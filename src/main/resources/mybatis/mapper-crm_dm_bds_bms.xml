@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.nuomi.crm.contact.dao.CrmFirmContactRelationDao">
+
+    <resultMap id="BaseResultMap" type="com.baidu.nuomi.crm.contact.dao.entity.CrmFirmContactRelation" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="Saler_id" property="salerId" jdbcType="BIGINT" />
+        <result column="Saler_name" property="salerName" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, Saler_id, Saler_name
+    </sql>
+
+    <select id="findSalerListByCityId" resultMap="CrmDmDbsBmsMapper"  >
+        select
+        <include refid="Base_Column_List" />
+        from crm_dm_bds_bms
+        WHERE staff_city_id= #{0}
+        LIMIT 10
+    </select>
+
+</mapper>
